@@ -12,5 +12,8 @@ Route::resource('page',PageController::class);
 // Route::get('/create',PageController::class,'create');
 // Route::post('/create',PageController::class,'store');
 
+Route::get('/filter',[PageController::class,'filter'])->name('page.filter');
+
+
 Route::get('/{link}', [PageController::class, 'showByLink']);
 

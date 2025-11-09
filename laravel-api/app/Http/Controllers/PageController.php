@@ -79,6 +79,17 @@ class PageController extends Controller
     return view('page', compact('page'));
 }
 
+public function filter(Request $request)
+{
+    $sectionType = $request->query('section_type');
 
+    $pages = Page::when($sectionType, function ($query, $sectionType) {
+        $query->where('section_type', $sectionType);
+    })->get();
+
+    return response()->json($pages);
+}
 
 }
+
+
